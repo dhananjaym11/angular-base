@@ -36,7 +36,6 @@ export class TokenInterceptor implements HttpInterceptor {
 
     private setAuthorizationHeader(request: HttpRequest<any>): HttpRequest<any> {
         const token: string = this.storageService.getItem(AppSettings.TOKEN_KEY);
-        debugger
         // request = request.clone({ setHeaders: { [AppSettings.HEADER_AUTHORIZATION]: (token || '') } });
         // req = req.clone({ setHeaders: { [AppSettings.HEADER_CONTENT_TYPE]: AppSettings.HEADER_CONTENT_TYPE_VALUE } });
         // req = req.clone({ setHeaders: { [AppSettings.HEADER_ACCEPT]: AppSettings.HEADER_CONTENT_TYPE_VALUE } });
