@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { HttpClientModule, HTTP_INTERCEPTORS, HttpClient } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -13,6 +13,7 @@ import { UserListComponent } from './modules/users/components/user-list/user-lis
 import { LoginComponent } from './pages/login/login.component';
 import { AppHomeComponent } from './pages/app-home/app-home.component';
 import { LogoutComponent } from './modules/home/pages/logout/logout.component';
+import { PersonFormComponent } from './modules/form/components/person-form/person-form.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,8 @@ import { LogoutComponent } from './modules/home/pages/logout/logout.component';
     UserListComponent,
     LoginComponent,
     AppHomeComponent,
-    LogoutComponent
+    LogoutComponent,
+    PersonFormComponent
   ],
   imports: [
     BrowserModule,

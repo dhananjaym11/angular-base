@@ -19,6 +19,8 @@ import { HeaderComponent } from './components/header/header.component';
     ],
     exports: [
         HeaderComponent,
+        FormsModule,
+        ReactiveFormsModule,
     ]
 })
 
