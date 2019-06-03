@@ -4,25 +4,24 @@ import { Subscription } from 'rxjs';
 import { UiService } from '../../services/ui.service';
 
 @Component({
-  selector: 'app-header',
-  templateUrl: './header.component.html',
-  styleUrls: ['./header.component.scss']
+  selector: 'app-loader',
+  templateUrl: './loader.component.html',
+  styleUrls: ['./loader.component.scss']
 })
-export class HeaderComponent implements OnInit, OnDestroy {
+export class LoaderComponent implements OnInit, OnDestroy {
+  show = false;
   subscription: Subscription;
-  homeClicked = false;
 
   constructor(private uiService: UiService) { }
 
   ngOnInit() {
-    this.subscription = this.uiService.changeHeaderLinkEvent
+    this.subscription = this.uiService.toggleLoaderEvent
       .subscribe((state: boolean) => {
-        this.homeClicked = state;
+        this.show = state;
       });
   }
 
   ngOnDestroy() {
     this.subscription.unsubscribe();
   }
-
 }

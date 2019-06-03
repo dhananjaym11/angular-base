@@ -7,7 +7,8 @@
     <ul class="header-links clearfix">
       <li>
         <a routerLink="/">
-          <span>Home</span>
+          <span *ngIf="homeClicked">Home Clicked</span>
+          <span *ngIf="!homeClicked">Home</span>
         </a>
       </li>
       <li>
