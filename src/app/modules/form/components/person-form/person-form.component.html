@@ -23,7 +23,7 @@
         </div>
       </div>
       <div class="col-sm-6">
-        <div *ngFor="let person of personList" class="col-sm-3">
+        <div *ngFor="let person of personFormService.personList" class="col-sm-3">
           <span>{{person.name}} - {{person.age}}</span>
           <button title="delete" (click)="handleDeletePerson(person.id)">
             x</button>
