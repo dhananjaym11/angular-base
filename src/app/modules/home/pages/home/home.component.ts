@@ -15,8 +15,10 @@ export class HomeComponent implements OnInit {
   }
 
   changeHeaderLink() {
-    this.uiService.changeHeaderLink(true);
     this.uiService.toggleLoader(true);
+    setTimeout(() => {
+      this.uiService.toggleLoader(false);
+      this.uiService.changeHeaderLink(true);
+    }, 5000);
   }
-
 }
