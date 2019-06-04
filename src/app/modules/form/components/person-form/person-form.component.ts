@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormBuilder, FormControl } from '@angular/forms';
+import { FormGroup, FormControl } from '@angular/forms';
 
 import { Person } from '../../model/person';
+import { UiService } from '../../../../modules/shared/services/ui.service';
 
 @Component({
   selector: 'app-person-form',
@@ -15,7 +16,7 @@ export class PersonFormComponent implements OnInit {
     personAge: new FormControl(''),
   });;
 
-  constructor() { }
+  constructor(private uiService: UiService) { }
 
   ngOnInit() {
   }
@@ -30,11 +31,13 @@ export class PersonFormComponent implements OnInit {
     }
     this.personList.push(obj);
     this.personForm.reset();
+    this.uiService.showMessage('New person added');
   }
 
   handleDeletePerson(id) {
     const updatedList = this.personList.filter(person => person.id !== id);
     this.personList = updatedList;
+    this.uiService.showMessage('person deleted');
   }
 
 }

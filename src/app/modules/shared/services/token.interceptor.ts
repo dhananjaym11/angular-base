@@ -6,6 +6,7 @@ import { map, catchError } from 'rxjs/operators';
 
 import { AppSettings } from './app.settings';
 import { StorageService } from './storage.service';
+import { UiService } from './ui.service';
 
 @Injectable({
     providedIn: 'root'
@@ -13,7 +14,8 @@ import { StorageService } from './storage.service';
 export class TokenInterceptor implements HttpInterceptor {
     constructor(
         private storageService: StorageService,
-        private router: Router
+        private router: Router,
+        private uiService: UiService
     ) { }
 
     intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
@@ -26,7 +28,7 @@ export class TokenInterceptor implements HttpInterceptor {
                     return resp;
                 }),
                 catchError(err => {
-                    console.log('event', event);
+                    this.uiService.toggleLoader(false);
                     if (err instanceof HttpErrorResponse) {
                         return this.catch(err);
                     }
@@ -36,9 +38,6 @@ export class TokenInterceptor implements HttpInterceptor {
 
     private setAuthorizationHeader(request: HttpRequest<any>): HttpRequest<any> {
         const token: string = this.storageService.getItem(AppSettings.TOKEN_KEY);
-        // request = request.clone({ setHeaders: { [AppSettings.HEADER_AUTHORIZATION]: (token || '') } });
-        // req = req.clone({ setHeaders: { [AppSettings.HEADER_CONTENT_TYPE]: AppSettings.HEADER_CONTENT_TYPE_VALUE } });
-        // req = req.clone({ setHeaders: { [AppSettings.HEADER_ACCEPT]: AppSettings.HEADER_CONTENT_TYPE_VALUE } });
         if (token) {
             request = request.clone({
                 setHeaders: {
@@ -52,7 +51,8 @@ export class TokenInterceptor implements HttpInterceptor {
     }
 
     private catch(error: HttpErrorResponse): Observable<any> {
-        console.log('Error Response ::: ' + JSON.stringify(error.error));
+        this.uiService.showMessage(error.message);
+        // console.log('Error Response ::: ' + JSON.stringify(error.error), error);
         if (error.status === 401 || error.status === 400) {
             this.router.navigate(['/sign-in']);
             return empty();

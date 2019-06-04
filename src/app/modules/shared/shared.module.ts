@@ -6,12 +6,15 @@ import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 
 import { HeaderComponent } from './components/header/header.component';
 import { LoaderComponent } from './components/loader/loader.component';
+import { MessageComponent } from './components/message/message.component';
 
 const materialComponents = [
-    MatProgressSpinnerModule
+    MatProgressSpinnerModule,
+    MatSnackBarModule,
 ];
 
 @NgModule({
@@ -27,14 +30,16 @@ const materialComponents = [
     declarations: [
         HeaderComponent,
         LoaderComponent,
+        MessageComponent,
     ],
     exports: [
-        HeaderComponent,
         FormsModule,
         ReactiveFormsModule,
         BrowserAnimationsModule,
         materialComponents,
+        HeaderComponent,
         LoaderComponent,
+        MessageComponent,
     ]
 })
 

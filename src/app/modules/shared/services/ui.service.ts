@@ -7,6 +7,7 @@ import { Subject } from 'rxjs';
 export class UiService {
   private _changeHeaderLinkEvent = new Subject<boolean>();
   private loaderSubject = new Subject<boolean>();
+  private showMessageSubject = new Subject<string>();
 
   constructor() { }
 
@@ -24,5 +25,13 @@ export class UiService {
 
   get toggleLoaderEvent(): Subject<boolean> {
     return this.loaderSubject;
+  }
+
+  showMessage(message: string) {
+    this.showMessageSubject.next(message);
+  }
+
+  get showMessagerEvent(): Subject<string> {
+    return this.showMessageSubject;
   }
 }
