@@ -14,6 +14,10 @@ import { LoginComponent } from './pages/login/login.component';
 import { AppHomeComponent } from './pages/app-home/app-home.component';
 import { LogoutComponent } from './modules/home/pages/logout/logout.component';
 import { PersonFormComponent } from './modules/form/components/person-form/person-form.component';
+import { ReactiveFormComponent } from './modules/angular-form/pages/reactive-form/reactive-form.component';
+import { TemplateFormComponent } from './modules/angular-form/pages/template-form/template-form.component';
+import { PersonReactiveFormComponent } from './modules/angular-form/components/person-reactive-form/person-reactive-form.component';
+import { PersonTemplateFormComponent } from './modules/angular-form/components/person-template-form/person-template-form.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +29,11 @@ import { PersonFormComponent } from './modules/form/components/person-form/perso
     LoginComponent,
     AppHomeComponent,
     LogoutComponent,
-    PersonFormComponent
+    PersonFormComponent,
+    ReactiveFormComponent,
+    TemplateFormComponent,
+    PersonReactiveFormComponent,
+    PersonTemplateFormComponent,
   ],
   imports: [
     BrowserModule,

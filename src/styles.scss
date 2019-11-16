@@ -19,3 +19,12 @@ ol, ul {
     margin: 0;
     list-style: none;
 }
+
+.cdk-overlay-container .mat-menu-panel {
+    min-height: 0;
+}
+
+.mat-menu-content {
+    padding: 10px 8px;
+    font-size: 13px;
+}

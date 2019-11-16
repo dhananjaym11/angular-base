@@ -21,6 +21,17 @@
           <span>Forms</span>
         </a>
       </li>
+      <li class="menu-parent">
+        <a mat-button [matMenuTriggerFor]="menu">Angular Forms</a>
+        <mat-menu #menu="matMenu">
+          <div>
+            <a routerLink="/angular-forms/reactive-form">Reactive form</a>
+          </div>
+          <div>
+            <a routerLink="/angular-forms/template-form">Template form</a>
+          </div>
+        </mat-menu>
+      </li>
       <li>
         <a routerLink="/logout">
           <span>Logout</span>
