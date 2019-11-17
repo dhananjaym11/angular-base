@@ -1,1 +1,53 @@
-<p>person-reactive-form works!</p>
+<div class="reactive-form">
+    <form [formGroup]="profileForm" (ngSubmit)="onSubmit()">
+        <div>
+            <label>First Name:</label>
+            <input type="text" formControlName="firstName">
+        </div>
+        <div>
+            <label>Last Name:</label>
+            <input type="text" formControlName="lastName">
+        </div>
+        <div>
+            <label>Address:</label>
+        </div>
+        <div formArrayName="addresses" *ngFor="let address of profileForm.get('addresses').controls; let i = index;">
+            <div [formGroupName]="i">
+                <div class="row">
+                    <div class="col-md-3">
+                        <label>City:</label>
+                        <input type="text" formControlName="city" />
+                    </div>
+                    <div class="col-md-3">
+                        <label>State:</label>
+                        <input type="text" formControlName="state" />
+                    </div>
+                    <div class="col-md-3">
+                        <label>Country:</label>
+                        <input type="text" formControlName="country" />
+                    </div>
+                    <div class="col-md-3 action-div">
+                        <div *ngIf="i === profileForm.get('addresses').controls.length-1">
+                            <button 
+                            type="button" 
+                            class="btn btn-link" 
+                            (click)="addAddress()">
+                                <i class="fa fa-plus" aria-hidden="true"></i>
+                            </button>
+                        </div>
+                        <div *ngIf="i">
+                            <button 
+                            type="button" 
+                            class="btn btn-link" 
+                            (click)="deleteAddress(i)">
+                                <i class="fa fa-trash" aria-hidden="true"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <button type="submit">Save</button>
+    </form>
+</div>

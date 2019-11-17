@@ -8,6 +8,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatMenuModule } from '@angular/material/menu';
+import { MatGridListModule } from '@angular/material/grid-list';
 
 import { HeaderComponent } from './components/header/header.component';
 import { LoaderComponent } from './components/loader/loader.component';
@@ -17,6 +18,7 @@ const materialComponents = [
     MatProgressSpinnerModule,
     MatSnackBarModule,
     MatMenuModule,
+    MatGridListModule,
 ];
 
 @NgModule({
